@@ -45,7 +45,7 @@ void AMineItem::Explode()
 				ExplosionParticle,
 				GetActorLocation(),
 				GetActorRotation(),
-				false
+				true
 		);
 	}
 	
@@ -71,28 +71,6 @@ void AMineItem::Explode()
 					nullptr,
 					this,
 					UDamageType::StaticClass()
-			);
-		}
-	}
-	
-	if (Particle)
-	{
-		UWorld* World = GetWorld();
-		if (World)
-		{
-			TWeakObjectPtr<UParticleSystemComponent> WeakParticle(Particle);
-        
-			GetWorld()->GetTimerManager().SetTimer(
-				DestroyParticleTimerHandle,
-				[WeakParticle]()
-				{
-					if (WeakParticle.IsValid())
-					{
-						WeakParticle->DestroyComponent();
-					}
-				},
-				2.0f,
-				false
 			);
 		}
 	}

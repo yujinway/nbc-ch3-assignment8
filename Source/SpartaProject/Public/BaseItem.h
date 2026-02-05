@@ -29,8 +29,6 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Effects")
 	USoundBase* PickupSound;
 	
-	FTimerHandle DestroyParticleTimerHandle;
-	
 	virtual void OnItemOverlap(
 			UPrimitiveComponent* OverlappedComp,
 			AActor* OtherActor,
@@ -44,7 +42,6 @@ protected:
 			UPrimitiveComponent* OtherComp,
 			int32 OtherBodyIndex) override;
 	virtual void ActivateItem(AActor* Activator) override;
-	virtual void Destroyed() override;
 	virtual FName GetItemType() const override;
 	
 	void DestroyItem();
